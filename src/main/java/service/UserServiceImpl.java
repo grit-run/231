@@ -3,7 +3,6 @@ package service;
 import dao.UserDao;
 import model.User;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 

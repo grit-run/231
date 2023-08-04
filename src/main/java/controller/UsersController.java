@@ -17,6 +17,7 @@ public class UsersController {
 
     @Autowired
     public UsersController(UserService userService) {
+
         this.userService = userService;
     }
 
@@ -24,7 +25,6 @@ public class UsersController {
     public String showAllUsers(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
-
         return "index";
     }
 
