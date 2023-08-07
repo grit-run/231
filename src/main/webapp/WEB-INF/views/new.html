@@ -9,6 +9,7 @@
     <input type="hidden" th:field="*{id}" value="0L">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{username}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</div>
     <br/>
     <label for="email">Enter email: </label>
     <input type="text" th:field="*{email}" id="email"/>

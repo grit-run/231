@@ -8,7 +8,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import service.UserService;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -23,8 +22,7 @@ public class UsersController {
 
     @GetMapping("/")
     public String showAllUsers(Model model) {
-        List<User> users = userService.getAllUsers();
-        model.addAttribute("users", users);
+        model.addAttribute("users", userService.getAllUsers());
         return "/index";
     }
 
