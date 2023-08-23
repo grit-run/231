@@ -14,6 +14,7 @@ import java.util.EnumSet;
 public class SpringMvcConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
+
         return new Class[]{AppHibernateConfig.class};
     }
 

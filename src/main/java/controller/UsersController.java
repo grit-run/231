@@ -10,7 +10,7 @@ import service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping(".")
 public class UsersController {
     private final UserService userService;
 
@@ -23,7 +23,7 @@ public class UsersController {
     @GetMapping("/")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
-        return "/index";
+        return "index";
     }
 
     @GetMapping("/{id}/edit")
