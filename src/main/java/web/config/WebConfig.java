@@ -1,4 +1,4 @@
-package config;
+package web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -15,13 +15,13 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan()
+@ComponentScan("web")
 public class WebConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
 
 
     @Autowired
-    public WebConfig(ApplicationContext applicationContext, Environment env) {
+    public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
@@ -49,7 +49,6 @@ public class WebConfig implements WebMvcConfigurer {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
         resolver.setCharacterEncoding("UTF-8");
-
         registry.viewResolver(resolver);
     }
 }

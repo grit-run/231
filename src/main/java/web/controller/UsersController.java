@@ -1,16 +1,16 @@
-package controller;
+package web.controller;
 
-import model.User;
+import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import service.UserService;
+import web.service.UserService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(".")
+@RequestMapping("/index")
 public class UsersController {
     private final UserService userService;
 

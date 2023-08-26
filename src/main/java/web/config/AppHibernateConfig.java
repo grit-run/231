@@ -1,9 +1,8 @@
-package config;
+package web.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -15,9 +14,9 @@ import org.springframework.core.env.Environment;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.util.Properties;
 
 @Configuration
-@EnableAspectJAutoProxy
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
 public class AppHibernateConfig {
@@ -25,6 +24,15 @@ public class AppHibernateConfig {
 
     public AppHibernateConfig(Environment env) {
         this.env = env;
+    }
+
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
+
+        return properties;
     }
 
     @Bean
@@ -41,9 +49,11 @@ public class AppHibernateConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         LocalContainerEntityManagerFactoryBean localEntMan = new LocalContainerEntityManagerFactoryBean();
+
         localEntMan.setDataSource(dataSource());
-        localEntMan.setPackagesToScan("model");
+        localEntMan.setPackagesToScan("web.model");
         localEntMan.setJpaVendorAdapter(vendorAdapter);
+        localEntMan.setJpaProperties(hibernateProperties());
         return localEntMan;
     }
 

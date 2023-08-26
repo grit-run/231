@@ -1,7 +1,7 @@
-package service;
+package web.service;
 
-import dao.UserDao;
-import model.User;
+import web.dao.UserDao;
+import web.model.User;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
