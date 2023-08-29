@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Stage</title>
@@ -13,9 +13,6 @@
     <a th:href="@{/{id}(id=${user.getId()})}"
        th:text="${user.getUsername() + ', ' + user.getEmail()}">user</a>
 </div>
-
-<br/>
-<hr/>
 <div>
     <div>
         <button onclick="window.location.href ='new'"><span>Create new user</span>

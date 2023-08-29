@@ -20,7 +20,7 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "index";
